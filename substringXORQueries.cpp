@@ -5,25 +5,20 @@
 using namespace std;
 
 // Function to convert binary to decimal
-int binaryToDecimal(int n)
+int binaryToDecimal(string str)
 {
-    int num = n;
-    int dec_value = 0;
- 
-    // Initializing base value to 1, i.e 2^0
-    int base = 1;
- 
-    int temp = num;
-    while (temp) {
-        int last_digit = temp % 10;
-        temp = temp / 10;
- 
-        dec_value += last_digit * base;
- 
-        base = base * 2;
+    int dec_num = 0;
+      int power = 0 ;
+    int n = str.length() ; 
+   
+      for(int i = n-1 ; i>=0 ; i--){
+      if(str[i] == '1'){
+        dec_num += (1<<power) ;
+      }
+      power++ ; 
     }
- 
-    return dec_value;
+   
+    return dec_num;
 }
 
 vector<int> substringHelper(int first, int second, string s) {
@@ -32,7 +27,7 @@ vector<int> substringHelper(int first, int second, string s) {
 
         
         for(int i = 0; i < s.size()+1; i++){
-            for(int j = 0; j < s.size()+1; j++){
+            for(int j = 2; j < s.size()+1; j++){
                 /*
                 char *cstr = new char[str.size() + 1];
                 std::strcpy(cstr, str.c_str());
@@ -45,13 +40,21 @@ vector<int> substringHelper(int first, int second, string s) {
                 char * cstr = new char[s.size()+1];
                 strcpy(cstr, s.substr(i,j).c_str());
                 int charNum = s.substr(i,j).size();
-                cout << "Char Num: " << charNum << endl;
-                int val = atoi(cstr);
-                val = binaryToDecimal(val);
+                //cout << "Char Num: " << charNum << endl;
+                //long val = atol(cstr);
+                long val = atoll(cstr);
+                
+                //cout << "Value after atol: " << val << endl;
+                //printf("%llu\n", val);
+                //val = binaryToDecimal(val);
+                
+                //val = stoll((string) s.substr(i,j), 0, 2);
+                //cout << "Value after conversion: " << val << endl;
+                //printf("%llu\n", val);
                 //int val = stoi(s.substr(i,j), nullptr, 2);
-                cout << cstr << " : " << val << endl;
+                //cout << cstr << " : " << val << endl;
                 if((val ^ first) == second && (charNum < min && charNum != 0)){
-                    cout << "Match: " << val << "       i: " << i << "       j: " << j+i-1 << endl;
+                    //cout << "Match: " << val << "       i: " << i << "       j: " << j+i-1 << endl;
                     min = charNum;
                     minAns = {i, j+i-1};
                 }
