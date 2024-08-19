@@ -3,16 +3,15 @@
 #include <vector>
 #include <algorithm>
 #include <bitset>
-
 using namespace std;
+
+string master = "";
 
 class listNode {
     private:
-        //char key;
-        //listNode* next;
-    public:
         char key;
         listNode* next;
+    public:
         listNode(char c);
         char getKey() const;
         listNode* getNext() const;
@@ -61,57 +60,51 @@ linkedList::linkedList(){
 
 void linkedList::insertNode(char c){
     listNode* newNode = new listNode(c);
+    //cout << c << endl;
 
     // if empty
     if(head == nullptr){
         head = newNode;
     } else {
-        listNode* tmp = head;
-        while(tmp->getNext() != nullptr){
-            tmp = tmp->getNext();
-        }
-        tmp->setNext(newNode);
+        newNode->setNext(head);
+        head = newNode;
     }
 }
 
 void linkedList::printRev(){
     listNode* tmp = head;
-    cout << tmp << endl;
-    cout << tmp->getNext();
-    cout << "\nTrack\n";
-    cout << tmp << endl;
-    cout << tmp->getNext() << endl;
-    cout << tmp->next->next << endl;
-    cout << tmp->next->next->next << endl;
     while(tmp!=nullptr){
-        //cout << tmp->getKey();
-        cout << tmp << endl;
-        cout << tmp->getNext() << endl;
+        master += tmp->getKey();
 
-        tmp->setNext(tmp->getNext());
-        cout << "SECOND: " << tmp->getNext()<< endl;
-        cout << "THIRD: " << tmp->next<< endl;
+        //tmp->setNext(tmp->getNext());
+        tmp = tmp->getNext();
     }
 }
 
 string reversePrefix(string word, char ch) {
+    master = "";
     linkedList reverse;
     bool chFound = false;
     for(int i = 0; i < word.size(); i++){
-        cout << "HERE\n";
+        //cout << "HERE\n";
         if(word[i] != ch && !chFound){
             reverse.insertNode(word[i]);
         } else {
             if(!chFound) {
+                reverse.insertNode(word[i]);
                 reverse.printRev();
+                chFound = true;
+                continue;
             }
-            chFound = true;
-            cout << word[i];
+            master += word[i];
         }
     }
+    if(!chFound) return word;
+    return master;
 }
 
 int main (){
-    reversePrefix("abcdefd", 'd');
+    cout << reversePrefix("abcdefd", 'd');
+    cout << "\n";
     return 0;
 }
