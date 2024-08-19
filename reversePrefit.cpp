@@ -5,8 +5,6 @@
 #include <bitset>
 using namespace std;
 
-string master = "";
-
 class listNode {
     private:
         char key;
@@ -48,19 +46,22 @@ void listNode::print() const{
 class linkedList{
     private:
         listNode* head;
+        string master;
     public:
         linkedList();
         void insertNode(char c);
         void printRev();
+        void update(char c);
+        string answer();
 };
 
 linkedList::linkedList(){
     head = nullptr;
+    master = "";
 }
 
 void linkedList::insertNode(char c){
     listNode* newNode = new listNode(c);
-    //cout << c << endl;
 
     // if empty
     if(head == nullptr){
@@ -74,19 +75,23 @@ void linkedList::insertNode(char c){
 void linkedList::printRev(){
     listNode* tmp = head;
     while(tmp!=nullptr){
-        master += tmp->getKey();
-
-        //tmp->setNext(tmp->getNext());
+        update(tmp->getKey());
         tmp = tmp->getNext();
     }
 }
 
+void linkedList::update(char c){
+    master += c;
+}
+
+string linkedList::answer(){
+    return master;
+}
+
 string reversePrefix(string word, char ch) {
-    master = "";
     linkedList reverse;
     bool chFound = false;
     for(int i = 0; i < word.size(); i++){
-        //cout << "HERE\n";
         if(word[i] != ch && !chFound){
             reverse.insertNode(word[i]);
         } else {
@@ -96,11 +101,11 @@ string reversePrefix(string word, char ch) {
                 chFound = true;
                 continue;
             }
-            master += word[i];
+            reverse.update(word[i]);
         }
     }
     if(!chFound) return word;
-    return master;
+    return reverse.answer();
 }
 
 int main (){
