@@ -40,7 +40,9 @@ void listNode::setKey(char c){
 }
 
 void listNode::print() const{
-    cout << key;
+    while(this->getNext()!=nullptr){
+        cout << key;
+    }
 }
 
 class linkedList{
@@ -52,6 +54,7 @@ class linkedList{
         ~linkedList();
         void insertNode(char c);
         void printRev();
+        void debug();
         void update(char c);
         string answer();
         void deleteNode(int nodeOffset);
@@ -90,6 +93,30 @@ void linkedList::printRev(){
         update(tmp->getKey());
         tmp = tmp->getNext();
     }
+}
+
+void linkedList::debug(){
+    listNode* tmp = head;
+
+      // Initialize three pointers: curr, prev and next
+    listNode *curr = head, *prev = nullptr, *next;
+
+      // Traverse all the nodes of Linked List
+    while (curr != nullptr) {
+      
+        // Store next
+        next = curr->getNext();
+      
+        // Reverse current node's next pointer
+        curr->setNext(prev);
+      
+        // Move pointers one position ahead
+        prev = curr;
+        curr = next;
+    }
+      
+      // Return the head of reversed linked list
+    prev->print();
 }
 
 void linkedList::update(char c){
