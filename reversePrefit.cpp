@@ -53,6 +53,7 @@ class linkedList{
         void printRev();
         void update(char c);
         string answer();
+        void deleteNode(int nodeOffset);
 };
 
 linkedList::linkedList(){
@@ -87,6 +88,62 @@ void linkedList::update(char c){
 string linkedList::answer(){
     return master;
 }
+
+void linkedList::deleteNode(int nodeOffset) 
+{ 
+    listNode *temp1 = head, *temp2 = NULL; 
+    int ListLen = 0; 
+  
+    if (head == NULL) { 
+        cout << "List empty." << endl; 
+        return; 
+    } 
+  
+    // Find length of the linked-list. 
+    while (temp1 != NULL) { 
+        temp1 = temp1->getNext(); 
+        ListLen++; 
+    } 
+  
+    // Check if the position to be 
+    // deleted is greater than the length 
+    // of the linked list. 
+    if (ListLen < nodeOffset) { 
+        cout << "Index out of range"
+             << endl; 
+        return; 
+    } 
+  
+    // Declare temp1 
+    temp1 = head; 
+  
+    // Deleting the head. 
+    if (nodeOffset == 1) { 
+  
+        // Update head 
+        head = head->getNext(); 
+        delete temp1; 
+        return; 
+    } 
+  
+    // Traverse the list to 
+    // find the node to be deleted. 
+    while (nodeOffset-- > 1) { 
+  
+        // Update temp2 
+        temp2 = temp1; 
+  
+        // Update temp1 
+        temp1 = temp1->getNext(); 
+    } 
+  
+    // Change the next pointer 
+    // of the previous node. 
+    temp2->setNext(temp1->getNext); 
+  
+    // Delete the node 
+    delete temp1; 
+} 
 
 string reversePrefix(string word, char ch) {
     linkedList reverse;
