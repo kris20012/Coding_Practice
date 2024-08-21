@@ -49,6 +49,7 @@ class linkedList{
         string master;
     public:
         linkedList();
+        ~linkedList();
         void insertNode(char c);
         void printRev();
         void update(char c);
@@ -59,6 +60,16 @@ class linkedList{
 linkedList::linkedList(){
     head = nullptr;
     master = "";
+}
+
+linkedList::~linkedList(){
+    listNode* current = head;
+    while( current != 0 ) {
+        listNode* next = current->getNext();
+        delete current;
+        current = next;
+    }
+head = 0;
 }
 
 void linkedList::insertNode(char c){
