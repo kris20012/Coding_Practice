@@ -1,0 +1,889 @@
+<section>
+    <div class="container mt-3 mb-5" style="box-shadow: 0 0px 10px rgba(0, 0, 0, 0.2); border-radius: 10px;">
+        <div class="mt-3"></div>
+                
+        <div class="row pt-3">
+            <div class="col-md-12" style="padding-bottom: 20px;">
+                
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+<style>
+.nav-link {
+	color: #7794CC !important;
+}
+.nav_tabs {
+	margin: auto 2em auto 0;
+}
+
+.live-badge {
+	margin-bottom: 0 !important;
+	max-height: 24px;
+	padding: 0 5px;
+	border-radius: 3px;
+	font-size: smaller;
+	color: #fff;
+	background-color: #dc3545;
+	border-color: #dc3545;
+}
+
+.weather-card {
+    width: 100%;
+    border: 1px solid #ddd;
+    padding: 10px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    display: flex;
+    flex-direction: column;
+	margin-bottom: 10px;
+}
+
+.weather-header h6{
+    text-align: left;
+	font-weight: normal;
+	font-size: 12px;
+	margin: 0;
+}
+
+.weather-info {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.weather-left img {
+    max-width: 40px;
+    height: auto;
+    margin-right: 5px;
+	margin-top: 10px;
+	margin-bottom: 0;
+}
+
+.weather-left h6 {
+    font-size: 12px;
+    margin-left: 5px;
+	padding-left: 0 !important;
+	margin-bottom: 0;
+	align-items: center !important;
+}
+
+.weather-right p {
+    margin: 0;
+    font-size: 1rem;
+    color: #666;
+	text-align: right;
+	font-size: 12px;
+}
+
+.event-card {
+    width: 100%;
+    border: 1px solid #ddd;
+    padding: 10px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    display: flex;
+    flex-direction: column;
+	margin-bottom: 5px;
+}
+
+.mobile-weather-card {
+    width: 100%;
+    border: 1px solid #ddd;
+	margin: 0 auto;
+    padding: 10px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    display: flex;
+    flex-direction: column;
+	margin-bottom: 10px;
+	text-align: center;
+}
+
+.mobile-event-card {
+    width: 100%;
+    border: 1px solid #ddd;
+    padding: 10px;
+	margin: 0 auto;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    display: flex;
+    flex-direction: column;
+	margin-bottom: 5px;
+	text-align: center;
+}
+
+.mobile-weather-info {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.mobile-weather-left img {
+    max-width: 40px;
+    height: auto;
+    margin-right: 5px;
+	margin-top: 10px;
+	margin-bottom: 0;
+}
+
+.mobile-weather-left h6 {
+    font-size: 12px;
+    margin-left: 5px;
+	padding-left: 0;
+	margin-bottom: 0;
+	align-items: center;
+}
+
+.mobile-weather-right p {
+    margin: 0;
+    font-size: 1rem;
+    color: #666;
+	text-align: right;
+	font-size: 12px;
+}
+
+@media screen and (max-width: 768px) {
+    .weather-info {
+        flex-direction: column; 
+        align-items: center; 
+    }
+}
+
+.team-radio {
+  display: none;
+}
+
+.home-button, .away-button {
+  	background-color: white;
+  	color: black;
+  	cursor: pointer;
+  	padding: 5px 10px;
+  	border: none;
+  	transition: background-color 0.3s; 
+}
+
+.home-button{
+	border: 1px solid gray;
+ 	border-radius: 5px 0 0 5px;
+}
+
+.away-button{
+	border: 1px solid gray;
+ 	border-radius: 0 5px 5px 0;
+}
+
+.team-radio:checked + label {
+  background-color: black; 
+  color: white;
+  border: 1px solid gray;
+}
+
+.scroll-table {
+	font-size: 0.9em;
+}
+.scroll-table td, .scroll-table th{
+	background-color: white;
+}
+.dataTables_info {
+	font-size: 0.75em;
+}
+.dtfc-fixed-left {
+	z-index: 100;
+}
+</style>
+
+<div class="container">
+	<!-- Mobile Screens -->
+	<div class="row mb-30 d-block d-sm-none" style="margin-bottom: 10px; text-align: center;">
+		<div class="col-12" style="text-align: center; padding-bottom: 10px;">
+							<h6> Final </h6>
+				
+		</div>
+		<div class="row row-cols-2" style="margin-left: unset;">
+			<div class="col d-block d-sm-none text-center" style="margin-bottom: 10px;">
+				<div class="col-xs-4">
+					<img src="https://cdn-app.teamlinkt.com/media/team_data/430151/images/logo_800.png?1713459572">
+				</div>
+				<div class="col-xs-6" style="padding-left: 0;">
+					<h4 class="title" style="font-weight:bold; margin-bottom: 0px;">Stephen Leacock Ci Senior Boys Soccer</h4>
+					<div class="subtitle" style="margin-top: 5px">Home</div>
+                    <h6 class="subtitle" style="margin-bottom: 0px;">0-2-3</h6>
+                    <h6 class="subtitle">Boys Soccer / East Region / Senior Tier 2</h6>
+				</div>
+				<div class="col-xs-2" style="padding-left: 0;">
+					<h2 style="font-weight:bold;" class="home-score">2</h2>
+				</div>
+
+			</div>
+			<div class="col d-block d-sm-none text-center" style="margin-bottom: 10px;">
+				<div class="col-xs-4">
+					<img src="https://cdn-app.teamlinkt.com/media/association_data/19255/logo.png?1713286223">
+				</div>
+				<div class="col-xs-6" style="padding-left: 0;">
+					<h4 class="title" style="font-weight:bold; margin-bottom: 0px;">Cedarbrae Ci Senior Boys Soccer</h4>
+					<div class="subtitle" style="margin-top: 5px">Away</div>
+                    <h6 class="subtitle" style="margin-bottom: 0px;">1-2-2</h6>
+                    <h6 class="subtitle">Boys Soccer / East Region / Senior Tier 2</h6>
+				</div>
+				<div class="col-xs-2" style="padding-left: 0;">
+					<h2 style="font-weight:bold;" class="away-score">2</h2>
+				</div>
+			</div>
+		</div>
+				<div class="mobile-event-card">
+						<div class="subtitle" style="margin-bottom: 0px;">May 23 2024 @  3:30 pm -  4:30 pm</div>
+			<div class="small subtitle"> Stephen Leacock CI </div>
+		</div>
+			</div>
+	<!-- Desktop and tablet -->
+	<div class="row mb-30 d-none d-sm-flex" style="margin-bottom: 15px;">	
+		<div class="col-sm-4">
+			<div style="display: flex; flex-direction: row; flex: 1; align-items: center; justify-content: center;">
+				<div>
+					<img src="https://cdn-app.teamlinkt.com/media/team_data/430151/images/logo_800.png?1713459572" style="margin-right: 15px; max-width: 100px; height: auto;">
+				</div>
+				<div style="flex: 1;">
+					<h4 class="title" style="font-weight:bold; margin-bottom: 0px;">Stephen Leacock Ci Senior Boys Soccer</h4>
+					<div class="subtitle" style="margin-top: 5px">Home</div>
+                    <h6 class="subtitle" style="margin-bottom: 0px;">0-2-3</h6>
+                    <h6 class="subtitle">Boys Soccer / East Region / Senior Tier 2</h6>
+				</div>
+				<h2 style="font-weight:bold;" class="home-score">2</h2>
+			</div>
+		</div>
+		<div class="col-sm-3" style="min-height:150px; display: flex; flex-direction: column; flex: 1; align-items: center; justify-content: center;">
+			<div class="event-card">
+				<div style="text-align: center">
+										<h6 class="subtitle" style="margin-bottom: 5px">May 23 2024</h6>
+					<h6 class="subtitle" style="margin-bottom: 5px"> 3:30 pm -  4:30 pm</h6>
+					<h6 class="subtitle small" style="margin-bottom: 5px">Stephen Leacock CI</h6>
+									</div>
+			</div>
+			
+						
+		</div>
+		<div class="col-sm-4">
+			<div style="display: flex; flex-direction: row; flex: 1; align-items: center; justify-content: center;">
+				<h2 style="font-weight:bold;" class="away-score">2</h2>				
+				<div style="flex: 1; text-align: right;">
+					<h4 class="title" style="font-weight:bold; margin-bottom: 0px;">Cedarbrae Ci Senior Boys Soccer</h4>
+					<div class="subtitle" style="margin-top: 5px">Away</div>
+                    <h6 class="subtitle" style="margin-bottom: 0px;">1-2-2</h6>
+                    <h6 class="subtitle">Boys Soccer / East Region / Senior Tier 2</h6>
+				</div>
+				<div>
+					<img src="https://cdn-app.teamlinkt.com/media/association_data/19255/logo.png?1713286223" style="margin-left: 15px; max-width: 100px; height: auto;">
+				</div>
+			</div>
+
+		</div>
+	</div>
+	</div>
+
+<div id="box_score_are_you_there_mdl" class="modal fade" role="dialog" data-bs-backdrop="static" data-bs-keyboard="false">
+	<div class="modal-dialog">
+		<div class="modal-content">
+			<div class="modal-header">
+				<h4 class="modal-title">Still There?</h4>
+			</div>
+			<div class="modal-body">
+				<div class="row">
+					<div class="col-md-12">
+						<p class="p-0 m-0">We update the play-by-play, stats, score, and clock every minute. Please confirm you are still here to continue the automatic updates.</p>
+					</div>
+				</div>
+			</div>
+			<div class="modal-footer">
+				<button type="button" id="reset_box_score_auto_update_btn" onclick="resetAutoUpdateCounters(); return false;" class="btn btn-primary" data-bs-dismiss="modal">Still Here</button>
+			</div>
+		</div>
+	</div>
+</div>
+
+
+<div id="show_volleyball_sets_mdl" class="modal fade" role="dialog">
+	<div class="modal-dialog">
+		<div class="modal-content">
+			<div class="modal-header">
+				<h4 class="modal-title">Sets</h4>
+			</div>
+			<div class="modal-body">
+				<div class="row">
+					<div class="col-md-12">
+						<div class="table-responsive">
+							<table class="table table-hover no-footer" id="volleyball_set_scores_table">
+							</table>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="modal-footer">
+				<button type="button" class="btn btn-white" data-bs-dismiss="modal">Close</button>
+			</div>
+		</div>
+	</div>
+</div>
+
+<script>
+	function showVolleyballSetScores(sets, home_team_name=`Home`, away_team_name=`Away`) {
+		let home_wins = 0;
+		let away_wins = 0;
+		$('#volleyball_set_scores_table').html('');
+		$('#volleyball_set_scores_table').append('<thead><tr><th></th><th class="text-center">'+home_team_name+'</th><th class="text-center">'+away_team_name+'</th></tr></thead>');
+		$('#volleyball_set_scores_table').append('<tbody>');
+		$.each(sets, function(index, set) {
+			// find which score is higher and attribute to the winner
+			let home_score = set.home;
+			let away_score = set.away;
+			if (set.home > set.away) {
+				home_score = `<strong>${set.home}</strong>`;
+				home_wins++;
+			} else if (set.home < set.away) {
+				away_score = `<strong>${set.away}</strong>`;
+				away_wins++;
+			}
+			$('#volleyball_set_scores_table').append('<tr><td>'+set.name+'</td><td class="text-center">'+home_score+'</td><td class="text-center">'+away_score+'</td></tr>');
+		});
+		//add a row for the totals
+		if (home_wins > away_wins) {
+			$('#volleyball_set_scores_table').append('<tr><td>Total</td><td class="text-center"><strong>'+home_wins+'</strong></td><td class="text-center">'+away_wins+'</td></tr>');
+		} else if (home_wins < away_wins) {
+			$('#volleyball_set_scores_table').append('<tr><td>Total</td><td class="text-center">'+home_wins+'</td><td class="text-center"><strong>'+away_wins+'</strong></td></tr>');
+		} else {
+			$('#volleyball_set_scores_table').append('<tr><td>Total</td><td class="text-center">'+home_wins+'</td><td class="text-center">'+away_wins+'</td></tr>');
+		}
+		$('#volleyball_set_scores_table').append('</tbody>');
+		$("#volleyball_set_scores_table").removeClass("table-bordered");
+		$('#show_volleyball_sets_mdl').modal('show');
+	}
+</script><script>
+	var tables = []
+	let playByPlayData = {};
+	let box_score_auto_update_count = 0; //When this reaches 10, ask if they're still here, if they are, reset it to zero
+	let stats_auto_update_count = 0; //When this reaches 10, ask if they're still here, if they are, reset it to zero
+
+	$(document).ready(function(){
+		if (window.location.hash) {
+            // Fragment exists
+            hash = window.location.hash.replace("#", "");
+            ['recap', 'box_score', 'stats'].includes(hash);
+            switchToTabWithOptions(hash);
+        } else {
+			switchToTabWithOptions("stats");
+		}
+
+		$('#stats_tables_container_430086').hide();
+
+		if ( document.getElementById("away-radio") ) {
+			document.getElementById("away-radio").addEventListener("click", function() {
+				switchTeam('Away');
+			});
+		}
+		if ( document.getElementById("home-radio") ) {
+			document.getElementById("home-radio").addEventListener("click", function() {
+				switchTeam('Home');
+			});
+		}
+
+
+		// Initialize all tables as DataTables
+		for(let i = 0; i <= 0; i++){
+			const $table = $(`#table_${i}`);
+    		const ptsColumnIndex = findColumnIndexByText($table, 'PTS');
+    		const orderConfig = ptsColumnIndex !== -1 ? [[ptsColumnIndex, 'desc']] : []; // Set the order if 'PTS' column is present
+			tables[i] = $(`#table_${i}`).DataTable({
+				rowReorder: true,
+				columnDefs: [
+					{ orderable: true, targets: '_all'}
+				],
+		    	paging: false,
+				searching: false,
+		    	scrollX: true,
+				fixedColumns: {
+					left: 2
+				},
+				order: orderConfig,
+			});
+		}
+
+		//Set a timer so that every 60 seconds, it will update the box score or stats depending on which tab they're on
+			});
+
+	function findColumnIndexByText($table, searchText) {
+	    const headerRow = $table.find('thead tr').first(); // Assuming the header row is the first row
+	    const columnHeaders = headerRow.find('th');
+
+	    for (let i = 0; i < columnHeaders.length; i++) {
+	        if ($(columnHeaders[i]).text().trim() === searchText) {
+	            return i;
+	        }
+	    }
+
+	    return -1; // Return -1 if column is not found
+	}
+
+	function switchToTabWithOptions(key) {
+        hash = key;
+		// console.log("switchToTabWithOptions", key);
+		if (typeof key === undefined || key == null || key.length == 0 ) {
+			key='stats';
+		}
+
+		if (key=='box_score' && 0 == 0) key='stats';
+		if (key=='recap' && 0 == 0) key='stats';
+		// console.log("switchToTabWithOptions 2", key);
+        $(`.content_divs`).hide();
+        $(`.nav-link`).removeClass('active');
+
+        $(`#${key}_tab .nav-link`).addClass('active');
+        $(`#${key}_div`).show();
+		// console.log("switchToTabWithOptions 3", key);
+		if (key=='box_score' && !(Object.keys(playByPlayData).length > 0)) {
+			//get all event plays
+			getBoxScores();
+		}
+		if (key=='stats') {
+			//build the player stats tables
+			getPlayerStatistics();
+		}
+
+        window.history.pushState(key, key.replace("_", " ").toUpperCase(), "#" + key);
+
+		
+		tables?.forEach(function(e, i) {tables[i].columns.adjust();});
+    }
+
+	function getBoxScores() {
+		$.ajax({
+            type: "POST",
+            url: '/leagues/getBoxScores/1598468',
+            dataType: 'json',
+            data: {},
+            headers: {
+                "X-Api-Key": "34A3B892F989BB8BCEBD2FFAD9C78",
+            },
+            success: function(response) {
+				if (response.code == 200) {
+					playByPlayData = response.payload;
+					setPlayByPlayDataFunctions(); 
+
+					let new_home_score = parseInt(playByPlayData.EventPlayByPlayScoreboards[0].EventPlayByPlayScoreboard.home_score ?? 0);
+					let new_away_score = parseInt(playByPlayData.EventPlayByPlayScoreboards[0].EventPlayByPlayScoreboard.away_score ?? 0);
+
+					if (new_home_score != parseInt($($(".home-score")[0]).text()) || new_away_score != parseInt($($(".away-score")[0]).text())) {
+						updateScoreboard(new_home_score, new_away_score);
+					}
+				} else {
+					// console.log(response.message);
+				}
+            },
+            error: function(response) {
+                // console.log(response.message);
+            }
+        });
+	}
+
+	function buildEventPlayPhrase(event_play, play_type) {
+		if ( play_type != null && play_type.EventPlayType.phrase_template ) {   
+			let phraseTemplate = play_type.EventPlayType.phrase_template;
+			let optionalSegmentRegex = /\[\[.+?\]\]/gi;
+			let variableSegmentRegex = /{{.+?}}/gi;
+
+			// For each optional segment, check if the variables contained in it are present.
+			// If they are, then remove the surrounding [[]]
+			// If not, then replace the optional segment with ""
+			let templateWithoutIncompleteOptionals = phraseTemplate.replace(optionalSegmentRegex, (a, b, c) => {
+				let keys = [...a.matchAll(variableSegmentRegex)];
+				let found_all = true;
+				for (let v in keys) {
+					// get a key from the variable surrounded in curly braces
+					let key = keys[v][0].replace("{{", "").replace("}}", "");
+					let type_part = getPartTypeForKey(play_type.EventPlayTypePart, key);
+					if ( !type_part ) { found_all = false; break; }
+					let part = getPartForTypeId(event_play.EventPlayPart, type_part.id);
+					if ( !part ) { found_all = false; break; }
+					if (["offense_player", "defense_player", "all_players"].includes(type_part.type)) {
+						if ( part.value == 0 )  { found_all = false; break; }
+						let player = getPlayerFromId(part.value);
+						if (!player)  { found_all = false; break; }
+					}
+					if (type_part.type == "select") {
+						if ( part.value == 0 )  { found_all = false; break; }
+						for (let option in type_part.EventPlayTypePartOption) {
+							if (type_part.EventPlayTypePartOption[option].id == part.value) {
+								if (type_part.EventPlayTypePartOption[option].label == "") { found_all = false; break; }
+							}
+						}
+					}
+				}
+				// If we found all the variables in this optional segment, keep the segment.  
+				// Otherwise, remove the segment by returning an empty string.
+				return found_all ? a.replace("[[", "").replace("]]", "") : "";
+			});
+			
+			let filled_in_phrase = templateWithoutIncompleteOptionals.replace(variableSegmentRegex, (a, b, c) => {
+				let key = a.replace("{{", "").replace("}}", "");
+				let type_part = getPartTypeForKey(play_type.EventPlayTypePart, key);
+				if ( !type_part ) return "TYPE_PART_NOT_FOUND";
+				
+				let part = getPartForTypeId(event_play.EventPlayPart, type_part.id);
+
+				if ( !part ) return "PART_NOT_FOUND";
+
+				if (type_part.type == "value")
+					return part.value;
+				else if (type_part.type == "offense_player") {
+					if ( part.value == 0 ) return "Unknown";
+					let player = getPlayerFromId(part.value);
+					if (player) return `<b>${buildPlayerLabelWithJerseyNumber(player)}</b>`;
+					else return "PLAYER_NOT_FOUND";
+				} 
+				else if (type_part.type == "defense_player") {
+					if ( part.value == 0 ) return "Unknown";
+					let player = getPlayerFromId(part.value);
+					if (player) return `<b>${buildPlayerLabelWithJerseyNumber(player)}</b>`;
+					else return "PLAYER_NOT_FOUND";
+				} 
+				else if (type_part.type == "all_players") {
+					if ( part.value == 0 ) return "Unknown";
+					let player = getPlayerFromId(part.value);
+					if (player) return `<b>${buildPlayerLabelWithJerseyNumber(player)}</b>`;
+					else return "PLAYER_NOT_FOUND";
+				} else if (type_part.type == "select") {
+					for (let o in type_part.EventPlayTypePartOption) {
+						if (type_part.EventPlayTypePartOption[o].id == part.value) {
+							return type_part.EventPlayTypePartOption[o].label;
+						}
+					}
+					return "Unknown";
+				}
+
+				return `UNKNOWN_TYPE: ${type_part.type}`;
+			});
+
+			return filled_in_phrase;
+		}
+
+		return "Unknown Play";
+	}
+
+	function sortEventPlaysByTime(sort_direction='desc') {
+		if (playByPlayData?.EventPlays?.length > 0) {
+			let sorted_plays = {};
+			for (let p in playByPlayData.EventPlays) {
+				if (sorted_plays[playByPlayData.EventPlays[p].EventPlay.clock_seconds])
+				sorted_plays[playByPlayData.EventPlays[p].EventPlay.clock_seconds].push(playByPlayData.EventPlays[p]);
+			}
+			return sorted_plays;
+		}
+	}
+
+	/**
+	 * 
+	 */
+	function displayEventPlays() {    
+		$("#playByPlayData_container").empty();
+
+		if ( playByPlayData.EventPlays.length == 0 ) {
+			$("#playByPlayData_container").append( $("<div style='padding: 1em;color: #666666;'></div>").html( "No plays recorded" ) );
+		}
+
+		// Sort the plays by interval and seconds before displaying
+		playByPlayData.EventPlays.sort( playByPlayData.sortPlaysArray );
+		
+		playByPlayData.EventPlays.slice().reverse().forEach(function(event_play) {
+			
+			let play_type = getEventPlayTypeForId(event_play.EventPlay.event_play_type_id);
+			if ( !play_type ) return;
+
+			let interval = getIntervalForId(event_play.EventPlay.sport_interval_id);
+			let play_description = "";
+
+			if ( play_type != null && play_type.EventPlayType.phrase_template ) {   
+				if ( !event_play.phrase ) {
+					event_play.EventPlay.phrase = buildEventPlayPhrase(event_play, play_type);
+				}
+				play_description = event_play.EventPlay.phrase;
+			}
+
+			let row = $("<div class='mb-3'></div>");
+
+			let card = $(`<div class="card m-b-30"></div>`);
+			let card_header = $(`<div class="card-header bg-primary-rgba"></div>`);
+			let card_body = $(`<div class="card-body"></div>`);
+
+			let card_header_row = $(`<div class="row"></div>`);
+			card_header_row.append( $("<div class='col-6'></div>").html( interval?.SportInterval?.interval ? interval.SportInterval.interval : "" ) );
+			card_header_row.append( $("<div class='col-3'></div>").html( moment.utc( event_play.EventPlay.clock_seconds * 1000).format( event_play.EventPlay.clock_seconds >= 3600 ? 'H:mm:ss' : 'mm:ss') ) );
+			card_header_row.append( $("<div class='col-3'></div>").html( `${event_play.EventPlay.home_score} - ${event_play.EventPlay.away_score}` ) );
+			card_header.append( card_header_row );
+
+			let play_team = "";
+			if (event_play.EventPlay?.offense_team_id == '736037') {
+				play_team = `<span style="font-weight: bold;">SLCS</span> <img style="max-height:40px; width: auto;" src="https://cdn-app.teamlinkt.com/media/team_data/430151/images/logo_800.png?1713459572"> `;
+			} else if (event_play.EventPlay?.offense_team_id == '736034') {
+				play_team = `<span style="font-weight: bold;">CCSB</span> <img style="max-height:40px; width: auto;" src="https://cdn-app.teamlinkt.com/media/association_data/19255/logo.png?1713286223"> `;
+			}
+			else {
+				play_team = '';
+			}
+
+			card_body.html( play_team + play_description );
+
+			card.append( card_header );
+			card.append( card_body );
+			row.append( card );
+
+			$("#playByPlayData_container").append( row );
+		});
+
+	}
+	
+	function setPlayByPlayDataFunctions() {
+		playByPlayData.interval_index = [];
+		for (let i in playByPlayData.SportIntervals) {
+			playByPlayData.interval_index.push( playByPlayData.SportIntervals[i].SportInterval.id );
+		}
+
+		playByPlayData.sortPlaysArray = function (playA, playB) {
+			if ( playByPlayData.interval_index.indexOf(playA.EventPlay.sport_interval_id) < playByPlayData.interval_index.indexOf(playB.EventPlay.sport_interval_id) ) return 1;
+			if ( playByPlayData.interval_index.indexOf(playA.EventPlay.sport_interval_id) > playByPlayData.interval_index.indexOf(playB.EventPlay.sport_interval_id) ) return -1;
+
+			if (parseInt(playA.EventPlay.clock_seconds) > parseInt(playB.EventPlay.clock_seconds)) return 1;
+			if (parseInt(playA.EventPlay.clock_seconds) < parseInt(playB.EventPlay.clock_seconds)) return -1;
+
+			if (playA.EventPlay.created < playB.EventPlay.created) return 1;
+			if (playA.EventPlay.created > playB.EventPlay.created) return -1;
+
+			return 0;
+		};
+		
+		displayEventPlays();
+		return;
+	}
+
+	function getEventPlayTypeForId(event_play_type_id) {
+		for (let p in playByPlayData.EventPlayTypes) {
+			if ( playByPlayData.EventPlayTypes[p].EventPlayType.id != event_play_type_id ) continue;
+			return playByPlayData.EventPlayTypes[p];
+		}
+		return null;
+	}
+
+	function getIntervalForId(sport_interval_id) {
+		for ( let i in playByPlayData.SportIntervals ) {
+			if (playByPlayData.SportIntervals[i].SportInterval.id == sport_interval_id) return playByPlayData.SportIntervals[i];
+		}
+		return null;
+	}
+
+	/**
+	 * 
+	 */
+	function getPartTypeForKey(event_play_type_parts, key) {
+		for ( let e in event_play_type_parts ) {
+			if (event_play_type_parts[e].key == key) return event_play_type_parts[e];
+		}
+		return null;
+	}
+
+	/**
+	 * 
+	 */
+	function getPartForTypeId(event_play_parts, type_part_id) {
+		for ( let e in event_play_parts ) {
+			if (event_play_parts[e].event_play_type_part_id == type_part_id) return event_play_parts[e];
+		}
+		return null;
+	}
+
+	function getPlayerFromId(player_id) {
+		let player = playByPlayData.Players[ player_id ];
+		if (player) return player;
+		return null;
+	}
+
+	function buildPlayerLabelWithJerseyNumber(player) {
+		let label = [];
+
+		if ( player.name ) label.push( player.name );
+		if ( player.jersey_number !== undefined && Number.isInteger( player.jersey_number ) ) label.push( `(#${player.jersey_number})` );
+		return label.join(" ");
+	}
+
+	function switchTeam(team_id){
+		if (team_id === 'Home'){
+			$('#stats_tables_container_430151').show();
+			$('#stats_tables_container_430086').hide();
+			// Ensure all tables are updated when switching team view
+		}
+		else if(team_id === 'Away'){
+			$('#stats_tables_container_430086').show();
+			$('#stats_tables_container_430151').hide();
+			// Ensure all tables are updated when switching team view
+		}
+
+		tables.forEach(function(e, i) {tables[i].columns.adjust();});
+	}
+
+	function showSetsScore() {
+		showVolleyballSetScores([], `Stephen Leacock Ci Senior Boys Soccer`, `Cedarbrae Ci Senior Boys Soccer`);
+		return false;
+	}
+
+	function showAreYouTherePopup() {
+		$("#box_score_are_you_there_mdl").modal('show');
+		//focus the #reset_box_score_auto_update_btn button so if the user presses enter it will reset the count
+		$("#reset_box_score_auto_update_btn").focus();
+		return false;
+	}
+
+	function resetAutoUpdateCounters() {
+		box_score_auto_update_count = 0;
+		stats_auto_update_count = 0;
+		return true;
+	}
+
+	function updateScoreboard(home=0, away=0) {
+		home = home ?? 2;
+		away = away ?? 2;
+		$('.home-score').text(home);
+		$('.away-score').text(away);
+
+	}
+
+	function getPlayerStatistics() {
+		$.ajax({
+			url: '/leagues/getPlayerStatsForEvent/19255',
+			type: 'POST',
+			data: {
+				association_event_id: 1598468			},
+			dataType: 'json',
+            headers: {
+                "X-Api-Key": "34A3B892F989BB8BCEBD2FFAD9C78",
+            },
+			success: function(response) {
+
+				if (response.code != 200 || !response.payload?.stats || response.payload?.stats.length == 0) {
+					//show empty state
+				}
+
+				// build the stats tables
+				buildStatsTables(response.payload.stat_types??[], response.payload.stats);
+			},
+			error: function(response) {
+				// console.log(response);
+			}
+		});
+
+	}
+
+	function buildStatsTables(stat_types, stats) {
+		//build the stats tables
+		let table_count = 0;
+		let team_stats_table = ``;
+		for (var team_id in stats) {
+			if (!stats.hasOwnProperty(team_id)) continue;
+			let team_stats = stats[team_id];
+			let team_name = "Unknown";
+			let isHome = false;
+			let showHome = $(".team-radio:checked").attr('id') == "home-radio" ? true : false;
+			if (430151 == team_id) {
+				team_name = `Stephen Leacock Ci Senior Boys Soccer`;
+				isHome = true;
+			} else if (430086 == team_id) {
+				team_name = `Cedarbrae Ci Senior Boys Soccer`;
+			}
+			team_stats_table += `<div class="stats_tables_container" id="stats_tables_container_${team_id}" style="${((showHome && isHome) || (!showHome && !isHome)) ? "" : "display:none;"}">`
+			let ungrouped_list = (stat_types[team_id]['group'] && stat_types[team_id]['group']['0'] && stat_types[team_id]['group']['0']['list']) ? stat_types[team_id]['group']['0']['list'] : {};
+			for (var group_id in stat_types[team_id]['group']) {
+				if (!stat_types[team_id]['group'].hasOwnProperty(group_id)) continue;
+				let group = stat_types[team_id]['group'][group_id];
+				if (group_id == 0 && Object.keys(stat_types[team_id]['group']).length > 1) continue;
+				team_stats_table += `
+				<div class="row mb-4">
+					<h4 class="kf_hd1 margin_0">${group['info']['name'] ?? `General`}</h4>
+					<div style="clear: both"></div>
+					<div style="overflow-x: auto; margin-bottom: 20px;">
+						<table class="table table-sm table-hover mb-0 scroll-table" id="table_${table_count}" style="margin-bottom: 0; width: 100%;">
+							<thead>
+								<tr>
+									<th>#</th>
+									<th>Name</th>`;
+									if (group_id != 0) {
+									for (var stat_type_key in group['list']) {
+										if (!group['list'].hasOwnProperty(stat_type_key)) continue;
+										let stat_type = group['list'][stat_type_key];
+										team_stats_table += `<th>${stat_type['abbreviation']}</th>`;
+									}
+									}
+									for (var ungrouped_stat_type_id in ungrouped_list) {
+										if (!ungrouped_list.hasOwnProperty(ungrouped_stat_type_id)) continue;
+										let ungrouped_stat_type = ungrouped_list[ungrouped_stat_type_id];
+										team_stats_table += `<th>${ungrouped_stat_type['abbreviation']}</th>`;
+									}
+								team_stats_table += `
+								</tr>
+							</thead>
+							<tbody>`;
+								for (var player_id in team_stats['players']) {
+									if (!team_stats['players'].hasOwnProperty(player_id)) continue;
+									let player_info = team_stats['players'][player_id];
+									if(player_info['is_player'] == 0) continue;
+									if (group['info']['include_players_with_no_statistics'] != undefined && group['info']['include_players_with_no_statistics'] !== null && group['info']['include_players_with_no_statistics'] == 0) {
+										let has_stat_in_group = false; //check if player has a stat in this group
+										for (var player_stat_id in team_stats['statistic'][player_id]) {
+											if (has_stat_in_group) break;
+											if (!team_stats['statistic'][player_id].hasOwnProperty(player_stat_id)) continue;
+											for (var idx in group['list']) {
+												if (group['list'][idx]['id'] == player_stat_id) {
+													has_stat_in_group = true;
+													break;
+												}
+											}
+										}
+										
+										if (!has_stat_in_group) continue;
+									}
+									team_stats_table += `
+									<tr>
+										<td>${player_info['jersey_number']}</td>
+										<td>${player_info['name']}</td>`;
+										if (group_id != 0) {
+										for (stat_type_key in group['list']) {
+											if (!group['list'].hasOwnProperty(stat_type_key)) continue;
+											let stat_type = group['list'][stat_type_key];
+											if (team_stats['statistic'][player_id][stat_type['id']] == undefined) {
+												team_stats['statistic'][player_id][stat_type['id']] = {value: 0};
+											}
+											team_stats_table += `
+											<td style="">${parseFloat(team_stats['statistic'][player_id][stat_type['id']]['value'] ?? 0).toFixed(stat_type['decimal_places'])}</td>`
+										}
+										}
+										for (ungrouped_stat_type_key in ungrouped_list) {
+											if (!ungrouped_list.hasOwnProperty(ungrouped_stat_type_key)) continue;
+											let ungrouped_stat_type = ungrouped_list[ungrouped_stat_type_key];
+											if (team_stats['statistic'][player_id][ungrouped_stat_type['id']] == undefined) {
+												team_stats['statistic'][player_id][ungrouped_stat_type['id']] = {value: 0};
+											}
+											team_stats_table += `
+											<td style="">${parseFloat(team_stats['statistic'][player_id][ungrouped_stat_type['id']]['value'] ?? 0).toFixed(ungrouped_stat_type['decimal_places'])}</td>`;
+										}
+									team_stats_table += `
+									</tr>`;
+								}
+							team_stats_table += `
+							</tbody>
+						</table>
+					</div>
+				</div>`;
+			}
+			team_stats_table += `
+			</div>`;
+			table_count += 1;
+		}
+
+		$("#all_stats_tables_container").empty();
+		$("#all_stats_tables_container").append($(team_stats_table));
+
+
+	}
+</script>            </div>
+        </div>
+
+    </div>
+</section>
