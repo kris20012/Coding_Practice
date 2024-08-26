@@ -10,16 +10,9 @@ double average(vector<int>& salary) {
     int min = 999999, max = 0;
     for(int i = 0; i < salary.size(); i++){
         sum += salary[i];
-        if(salary[i] < min){
-            min = salary[i];
-        } 
-        if(salary[i] > max){
-            max = salary[i];
-        }
+        min = (salary[i] < min) ? salary[i] : min;
+        max = (salary[i] > max) ? salary[i]: max;
     }
-    cout << "Min: " << min << endl;
-    cout << "Max: " << max << endl;
-    cout << "Sum: " << min << endl;
     sum -= (min + max);
     return sum/(salary.size()-2);
 }
