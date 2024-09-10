@@ -67,6 +67,25 @@ vector<bool> prefixesDivBy5_v2(vector<int>& nums) {
         return tmp;
     }
 
+
+vector<bool> prefixesDivBy5_v3(vector<int>& nums) {
+        vector<bool> tmp;
+        int sum = 0;
+        
+        for(int i = 0; i < nums.size(); i++){
+            sum = sum << 1;
+            sum = sum + nums[i];
+            cout << "SUM:  " << sum << endl;
+            if (sum % 5 == 0){
+                tmp.push_back(true);
+            } else {
+                tmp.push_back(false);
+            }
+        }
+    
+        return tmp;
+    }
+
 int main() {
     // 0, 1, and 3
     vector <int> num = {0,1,1};
