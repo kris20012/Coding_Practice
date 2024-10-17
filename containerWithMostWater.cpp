@@ -20,13 +20,30 @@ int maxArea(vector<int>& height) {
     int right = 0;
 
     // Naive approach doesn't fit run time
-    for(int i = 0; i < height.size(); i++){
-        for(int j = i + 1; j < height.size(); j++){
-            cout << "I: " << height[i] << "     J: " << height[j] << endl;
-            width = i < j ? j - i : i - j;
-            area = calculateArea(height[i], height[j], width);
-            if(area > max) max = area;
+    // for(int i = 0; i < height.size(); i++){
+    //     for(int j = i + 1; j < height.size(); j++){
+    //         cout << "I: " << height[i] << "     J: " << height[j] << endl;
+    //         width = i < j ? j - i : i - j;
+    //         area = calculateArea(height[i], height[j], width);
+    //         if(area > max) max = area;
+    //     }
+    // }
+
+    left = 0;
+    right = height.size() - 1;
+
+    while(right >= 0 && left < height.size()){
+        cout << "Left: " << height[left] << "     Right: " << height[right] << endl;
+        width = right - left;
+        area = calculateArea(height[left], height[right], width);
+        if(area > max) max = area;
+        if(left > right) break;
+        if(height[left] > height[right]){
+            right--;
+        } else {
+            left++;
         }
+
     }
 
     return max;
