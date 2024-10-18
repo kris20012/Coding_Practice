@@ -2,6 +2,8 @@
 #include <string>
 #include <vector>
 #include <algorithm>
+#include <map>
+#include <unordered_map>
 using namespace std;
 
 int majorityElement(vector<int>& nums) {
@@ -37,3 +39,19 @@ int majorityElement(vector<int>& nums) {
 
 }
 
+int majorityElement2(vector<int>& nums) {
+    
+    unordered_map<int, int> hashTable;
+
+    for(int i = 0; i < nums.size(); i++){
+        hashTable[nums[i]]++;
+        cout << "Nums:  " << nums[i] << endl;
+    }
+
+    int appear = nums.size()/2;
+
+    for(unordered_map<int, int>::iterator it = hashTable.begin(); it != hashTable.end(); it++){
+        if(it->second > appear) return it->first;
+    }
+
+}
