@@ -1,13 +1,20 @@
+#include <iostream>
+#include <string>
+#include <vector>
+#include <algorithm>
+#include <map>
+#include <unordered_map>
+using namespace std;
 int singleNumber(vector<int>& nums) {
-        unordered_map<int, int> hashTable;
+    unordered_map<int, int> hashTable;
 
-        for(int i = 0; i < nums.size(); i++){
-            hashTable[nums[i]]++;
-        }
-
-        for(unordered_map<int, int>::iterator it=hashTable.begin(); it != hashTable.end(); it++){
-            cout << "First: " << it->first << " Second: " << it->second << endl;
-            if(it->second == 1) return it->first;
-        }
-        return -1;
+    for(int i = 0; i < nums.size(); i++){
+        hashTable[nums[i]]++;
     }
+
+    for(unordered_map<int, int>::iterator it=hashTable.begin(); it != hashTable.end(); it++){
+        cout << "First: " << it->first << " Second: " << it->second << endl;
+        if(it->second == 1) return it->first;
+    }
+    return -1;
+}
