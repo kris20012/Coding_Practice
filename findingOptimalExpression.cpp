@@ -6,6 +6,19 @@
 #include <unordered_map>
 using namespace std;
 
+// one minor optimization you could do is before going into the nested for loop,
+// find the index of the '+' character and have each of i and j loop through their
+// own sides.
+
+// for(int i=0;i<n;i++)
+//     if(expr[i]=='+'){
+//         idx=i;
+//         break;
+//     }
+
+// for(int b1=0;b1<num1.size();b1++){
+//     for(int b2=0;b2<num2.size();b2++){
+
 class Solution {
 public:
     int calculator(string expression){
