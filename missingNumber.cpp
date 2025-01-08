@@ -6,6 +6,9 @@
 #include <unordered_map>
 using namespace std;
 
+// the smarter approach would be to just sum the nums array
+// sum the numbers in range [0, n] and then subtract each other
+// time complexity is O(n) and space complexity is O(1)
 class Solution {
 public:
     int missingNumber(vector<int>& nums) {
